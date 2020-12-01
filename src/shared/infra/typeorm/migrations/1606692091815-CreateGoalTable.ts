@@ -14,7 +14,6 @@ export default class CreateGoalTable1606692091815
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
-
           {
             name: 'year',
             type: 'varchar',

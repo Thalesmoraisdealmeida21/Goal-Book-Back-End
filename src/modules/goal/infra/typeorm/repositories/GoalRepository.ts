@@ -37,6 +37,16 @@ class GoalRepository implements IGoalRepository {
 
     return goals;
   }
+
+  public async findById(id: string): Promise<Goal | undefined> {
+    const goal = await this.goalRepositoryClient.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return goal;
+  }
 }
 
 export default GoalRepository;
