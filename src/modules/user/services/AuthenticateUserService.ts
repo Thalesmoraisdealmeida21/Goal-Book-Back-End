@@ -39,7 +39,8 @@ export default class AuthenticateUserService {
       throw new AppError('password is wrong');
     }
 
-    const token = jwt.sign({ email }, auth.secret, {
+    const token = jwt.sign({}, auth.secret, {
+      subject: userExistent.id,
       expiresIn: auth.expiresIn,
     });
 
