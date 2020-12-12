@@ -20,8 +20,18 @@ class CreateUserService {
   public async execute({ name, email, password }: IRequest): Promise<User> {
     const userExistent = await this.usersRepository.findByEmail(email);
 
+    if (!name) {
+      throw new AppError('Nome de usuário não encontrado');
+    }
+
+    if (!email) {
+      throw new AppError('Este e-mail não esta cadastrado');
+    }
+    if (!password) {
+      throw new AppError('A senha esta incorreta');
+    }
     if (userExistent) {
-      throw new AppError('There is already a user with this email');
+      throw new AppError('Ja existe um usuário com este e-mail');
     }
 
     const salt = bcrypt.genSaltSync(10);

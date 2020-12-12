@@ -30,13 +30,13 @@ export default class AuthenticateUserService {
     const userExistent = await this.usersRepository.findByEmail(email);
 
     if (!userExistent) {
-      throw new AppError('This user does not exist');
+      throw new AppError('Este usuário não existe');
     }
 
     const passwordMatched = bcrypt.compareSync(password, userExistent.password);
 
     if (!passwordMatched) {
-      throw new AppError('password is wrong');
+      throw new AppError('A senha esta incorreta');
     }
 
     const token = jwt.sign({}, auth.secret, {

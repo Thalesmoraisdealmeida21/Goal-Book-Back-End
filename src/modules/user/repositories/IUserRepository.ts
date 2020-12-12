@@ -3,4 +3,5 @@ import User from '../infra/typeorm/entities/User';
 
 export default interface IUserRepository {
   create(user: ICreateUserDTO): Promise<User>;
+  findByEmail(email: string): Promise<User | undefined>;
 }

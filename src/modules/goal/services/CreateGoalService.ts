@@ -19,7 +19,7 @@ export default class CreateGoalService {
     const goalExists = await this.goalRepository.findByYear(year);
 
     if (goalExists) {
-      throw new AppError('this goal already exists for this year');
+      throw new AppError('Esta meta ja existe neste mês');
     }
 
     const goal = await this.goalRepository.create({
